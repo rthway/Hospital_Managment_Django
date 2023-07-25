@@ -1,3 +1,27 @@
 {% include 'base.html' %}
 {% include 'navigation.html' %}
-<h1>about us</h1>
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center" style="margin-top: 50px;">About Us</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="strong">Who we are and <br>what we do?</h1>
+            <p>This is a world leading hopital for<br>Patient Care</p>
+        </div>
+        <div class="col-md-6">
+            <p>The hospital management system (HMS) is an integrated software that handles different directions of clinic workflows. It manages the smooth healthcare performance along with administrative, medical, legal and financial control. That is a cornerstone for the successful operation of the healthcare facility.</p>
+            <p>There is always the wide choice of features that can be included in the system. Moreover, the most important thing they are created to streamline various procedures that meet the needs of all the users. The hospital management system feature list is concentrated on providing the smooth experience of patients, staff and hospital authorities.</p>
+        
+        </div>
+        <div class="row">
+            <div class="site-heading text-center">
+                <h3>Our Team</h3>
+                <p>Our team is ready to leverage the expertise we have accumulated in dozens of the projects to solve your most complex technical challenges.</p>
+                <div class="border"></div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+{% endblock content %}
