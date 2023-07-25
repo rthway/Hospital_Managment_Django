@@ -1,3 +1,24 @@
 {% include 'base.html' %}
 {% include 'navigation.html' %}
-<h1>Contact us</h1>
+
+
+
+{% block content%}
+<div class="container" style="margin-top: 50px;">
+    <h1 class="text-center">Contact us</h1>
+    <div class="row rt-5 text-center">
+      <div class="col-lg-3">
+        <h4>Contact</h4>
+      </div>
+      <div class="col-lg-3">
+        <h4>Email</h4>
+      </div>
+      <div class="col-lg-3">
+        <h4>Address</h4>
+      </div>
+      <div class="col-lg-3">
+        <h4>Office Time</h4>
+      </div>
+    </div>
+  </div>
+{% endblock content%}
