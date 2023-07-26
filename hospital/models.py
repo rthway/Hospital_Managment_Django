@@ -9,7 +9,7 @@ class Doctor(models.Model):
 class Patient(models.Model):
     Gender_choice=(
         ('M', 'Male'),
-        ('F', 'Female')
+        ('F', 'Female'),
         ('O', 'Other')
     )
     Name=models.CharField(max_length=100)
