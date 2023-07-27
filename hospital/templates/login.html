@@ -1,11 +1,24 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% block content %}
+
+
 <div class="container">
     <h2 class="text-center">Admin login</h2>
     <form method="POST">
-        {% csrf_tocken %}
+        {% csrf_token %}
+        {% if error_message %}
+            <p class="text-danger">{{ error_message }}</p>
+        {% endif %}
         <label>Admin Name</label>
         <input type="text" class="form-control" name="uname">
-        <lebel>Password</lebel>
+        <label>Password</label>
         <input type="password" class="form-control" name="pwd">
-        <input type="submit" value="login" class="form-control btn btn-primary">
+        <input type="submit" value="Login" class="form-control btn btn-primary">
     </form>
 </div>
+
+
+{% endblock content %}
+{% include 'footer.html' %}
+
