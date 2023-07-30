@@ -10,5 +10,8 @@ urlpatterns = [
     path('add_doctor/', views.add_doctor, name='add_doctor'),
     path('view_doctor/', views.View_doctor, name='view_doctor'),
     path('delete_doctor/<int:pid>/', views.Delete_doctor, name='delete_doctor'),
+    path('add_patient/', views.add_patient, name='add_patient'),
+    path('view_patient/', views.view_patient, name='view_patient'),
+    path('delete_patient/<int:patient_id>/', views.delete_patient, name='delete_patient'),
 
 ]

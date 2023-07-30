@@ -1,0 +1,34 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+
+<div>
+    <h2>View Patient</h2>
+    <table id="example" class="table table-striped">
+        <thead>
+            <tr>
+                <th>PatientID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{patient.id}}</td>
+                <td>{{patient.Name}}</td>
+                <td>{{patient.Gender}}</td>
+                <td>{{patient.Age}}</td>
+                <td>{{patient.Address}}</td>
+                <td>
+                    <a href="{% url 'delete_patient' patient.id %}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

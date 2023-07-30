@@ -1,0 +1,29 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+
+<head>
+    <title>Add Doctor</title>
+</head>
+<body>
+    <h1>Add Patient</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select><br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+        <label for="address">Address:</label>
+        <textarea name="address" required></textarea><br>
+        <input type="submit" value="Add">
+    </form>
+
+</body>
+{% include 'footer.html' %}
