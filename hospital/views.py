@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
+from .models import Doctor
 
 # Create your views here.
 def About(request):
@@ -35,3 +36,26 @@ def admin_login(request):
 def admin_logout(request):
     logout(request)
     return redirect('admin_login')  # Redirect to the admin login page after logout
+
+def add_doctor(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        special = request.POST.get('special')
+        Doctor.objects.create(Name=name, Phone=phone, Special=special)
+        return redirect('view_doctor')
+    return render(request, 'add_doctor.html')
+
+def View_doctor(request):
+    if not request.user.is_staff:
+        return redirect('login')
+    doc = Doctor.objects.all()
+    d={'doc':doc}
+    return render(request,'view_doctor.html',d)
+
+def Delete_doctor(request, pid):
+    if not request.user.is_staff:
+        return redirect('login')
+    doctor = Doctor.objects.get(id=pid)
+    doctor.delete()
+    return redirect('view_doctor')

@@ -1,0 +1,25 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+
+<head>
+    <title>Add Doctor</title>
+</head>
+<body>
+    <h1>Add Doctor</h1>
+
+    <form method="post">
+        <div class="form-group">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" class="form-control form-control-sm" name="name" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" class="form-control form-control-sm" name="phone" required><br>
+        <label for="special">Specialty:</label>
+        <input type="text" class="form-control form-control-sm" name="special" required><br>
+        <input type="submit" value="Add">
+        </div>
+    </form>
+
+</body>
+{% include 'footer.html' %}
