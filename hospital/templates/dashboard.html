@@ -1,0 +1,55 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Hospital Management System</title>
+    <!-- Add Bootstrap CSS link -->
+</head>
+<body>
+    <!-- Navbar (if you have one) -->
+    <!-- Replace 'navbar content' with your actual navbar code -->
+
+    <!-- Main content -->
+    <div class="container mt-5">
+        <h1>Admin Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Doctors</a></h5>
+                        <p class="card-text">{{ total_doctors }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Patients</h5>
+                        <p class="card-text">{{ total_patients }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Appointments</h5>
+                        <p class="card-text">{{ total_appointments }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more components and charts as needed for your dashboard -->
+    </div>
+
+    <!-- Footer (if you have one) -->
+    <!-- Replace 'footer content' with your actual footer code -->
+
+    <!-- Add Bootstrap JS scripts at the end of the body -->
+
+</body>
+</html>
+
+{% endblock %}
+{% include 'footer.html' %}

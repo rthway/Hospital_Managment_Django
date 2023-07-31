@@ -26,7 +26,7 @@ def admin_login(request):
         user = authenticate(request, username=username, password=password) # This line uses the authenticate function to check if the provided username and password match any user in the database. If a valid user is found, the user variable will contain the corresponding user object; otherwise, it will be None.
         if user is not None and user.is_staff: # This line checks whether the user variable is not None (i.e., a valid user object) and whether the user has the is_staff attribute set to True. The is_staff attribute is typically used to designate admin users in Django's default user model.
             login(request, user) # This line uses the login function to log in the user. It creates a user session and associates it with the current request.
-            return redirect('home')  # Replace 'admin_home' with the URL name of your admin dashboard/homepage
+            return redirect('dashboard')  # Replace 'admin_home' with the URL name of your admin dashboard/homepage
         else:
             error_message = "Invalid credentials or insufficient permissions. Please try again."
             return render(request, 'login.html', {'error_message': error_message})
@@ -114,3 +114,13 @@ def delete_appointment(request, appointment_id):
     appointment = Appoinment.objects.get(id=appointment_id)
     appointment.delete()
     return redirect('view_appointment')
+
+def dashboard(request):
+    total_doctors = Doctor.objects.count()
+    total_patients = Patient.objects.count()
+    total_appointments = Appoinment.objects.count()
+    return render(request, 'dashboard.html', {
+        'total_doctors': total_doctors,
+        'total_patients': total_patients,
+        'total_appointments': total_appointments,
+    })
