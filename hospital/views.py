@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
-from .models import Doctor, Patient
+from .models import Doctor, Patient, Appoinment
 
 # Create your views here.
 def About(request):
@@ -59,6 +59,7 @@ def Delete_doctor(request, pid):
     doctor = Doctor.objects.get(id=pid)
     doctor.delete()
     return redirect('view_doctor')
+
 def add_patient(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -81,3 +82,29 @@ def delete_patient(request, patient_id):
     patient = Patient.objects.get(id=patient_id)
     patient.delete()
     return redirect('view_patient')
+
+def add_appointment(request):
+    doctors = Doctor.objects.all()
+    patients = Patient.objects.all()
+    
+    if request.method == 'POST':
+        doctor_id = request.POST['doctor']
+        patient_id = request.POST['patient']
+        date = request.POST['date']
+        time = request.POST['time']
+        
+        doctor = Doctor.objects.get(pk=doctor_id)
+        patient = Patient.objects.get(pk=patient_id)
+        
+        Appoinment.objects.create(Doctor=doctor, Patient=patient, date=date, time=time)
+        
+    return render(request, 'add_appointment.html', {'doctors': doctors, 'patients': patients})
+
+def view_appointment(request):
+    if not request.user.is_staff:
+        return redirect('login')
+    appointments = Appoinment.objects.all()
+    return render(request, 'view_appointment.html', {'appointments': appointments})
+
+
+

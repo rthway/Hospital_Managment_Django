@@ -1,0 +1,32 @@
+
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+
+<div>
+    <h2>View Appointment</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>AppointmentID</th>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{appointment.id}}</td>
+                <td>{{appointment.Doctor.Name }}</td>
+                <td>{{appointment.Patient.Name}}</td>
+                <td>{{appointment.date}}</td>
+                <td>{{appointment.time}}</td>
+                
+            </tr>
+            {% endfor%}
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

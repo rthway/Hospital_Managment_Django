@@ -1,0 +1,39 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Appointment</title>
+</head>
+<body>
+    <h1>Add Appointment</h1>
+    <form method="post">
+        <div class="form-group">
+        {% csrf_token %}
+        <label for="doctor">Doctor:</label>
+        <select name="doctor" class="form-control form-control-sm" required>
+            {% for doctor in doctors %}
+                <option value="{{ doctor.pk }}">{{ doctor.Name }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="patient">Patient:</label>
+        <select name="patient" class="form-control form-control-sm" required>
+            {% for patient in patients %}
+                <option value="{{ patient.pk }}">{{ patient.Name }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label for="date">Date:</label>
+        <input type="date" name="date" class="form-control form-control-sm" required><br>
+        
+        <label for="time">Time:</label>
+        <input type="time" name="time" class="form-control form-control-sm" required><br>
+        
+        <input type="submit" value="Add Appointment">
+    </div>
+    </form>
+</body>
+</html>
+{% include 'footer.html' %}
