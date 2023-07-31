@@ -13,6 +13,7 @@
                 <th>Patient</th>
                 <th>Date</th>
                 <th>Time</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                 <td>{{appointment.Patient.Name}}</td>
                 <td>{{appointment.date}}</td>
                 <td>{{appointment.time}}</td>
+                <td>
+                    <a href="{% url 'delete_appointment' appointment.id %}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                </td>
                 
             </tr>
             {% endfor%}

@@ -108,3 +108,9 @@ def view_appointment(request):
 
 
 
+def delete_appointment(request, appointment_id):
+    if not request.user.is_staff:
+        return redirect('login')
+    appointment = Appoinment.objects.get(id=appointment_id)
+    appointment.delete()
+    return redirect('view_appointment')
